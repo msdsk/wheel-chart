@@ -1,0 +1,49 @@
+.pie{
+  width: 20em;
+  height:20em;
+  position:relative;
+  top: 0;
+  left:0;
+  background-color: #eee;
+}
+
+.pie__part{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transform-origin: 50% 50%;
+}
+
+.pie__input{
+  position: absolute;
+  left: -1000em;
+}
+
+.pie__label{
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  filter: saturate(0) brightness(5);
+  transition: filter 0.1s ease-in-out;
+}
+
+.pie__label:hover, .pie__label:hover ~ .pie__label{
+  filter: saturate(0.3) brightness(1.2);
+}
+
+.pie__input:checked ~ .pie__label{
+  filter: saturate(0) brightness(2);
+}
+
+.pie__part:not(:hover) .pie__input:checked ~ .pie__label,
+.pie__label:active,
+.pie__input:checked ~ .pie__label:hover ~ .pie__label,
+.pie__input:checked ~ .pie__label:hover,
+.pie__label:hover ~ .pie__input:checked ~ .pie__label
+{
+  filter: none;
+}
