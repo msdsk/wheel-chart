@@ -1,13 +1,23 @@
 const parts = 6
 const lvls = 5
+const angle = 2 * Math.PI / parts
 
 for (let part = 0; part < parts; part++) {
   const partEl = document.createElement("div")
+
   partEl.classList.add("pie__part")
-  const angle = 2 * Math.PI / parts
-  console.log(angle)
-  partEl.style.clipPath = `polygon(50% 0%, ${(1+Math.sin(angle))*50}% 0%, ${(1+Math.sin(angle))*50}% ${(1-Math.cos(angle))*50}%, 50% 50%)`
-  partEl.style.rotate = `${360*part/parts}deg`
+
+  const pointA = {
+    x: (1 + Math.sin(angle * part)) * 50,
+    y: (1 - Math.cos(angle * part)) * 50
+  }
+
+  const pointB = {
+    x: 0
+  }
+
+  // partEl.style.clipPath = `polygon(50% 0%, ${(1+Math.sin(angle))*50}% 0%, ${(1+Math.sin(angle))*50}% ${(1-Math.cos(angle))*50}%, 50% 50%)`
+  // partEl.style.rotate = `${360*part/parts}deg`
 
   for (let lvl = lvls; lvl > 0; lvl--) {
     const lvlInputEl = document.createElement("input")
